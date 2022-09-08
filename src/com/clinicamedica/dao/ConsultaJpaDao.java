@@ -7,6 +7,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.NoResultException;
 import javax.persistence.Persistence;
 
+
 import com.clinicamedica.entidades.Consultas;
 
 public class ConsultaJpaDao {
@@ -27,7 +28,7 @@ public class ConsultaJpaDao {
 
 	private EntityManager getEntityManager() {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("conexaoBd");
-
+ 
 		if (entityManager == null) {
 			entityManager = factory.createEntityManager();
 		}
@@ -108,6 +109,8 @@ public class ConsultaJpaDao {
 				+ "' AND paciente_id = " + idPaciente+" ORDER BY dataConsulta ASC").getResultList();
 	}
 
+
+	
 	@SuppressWarnings("unchecked")
 	public List<Consultas> prontuario(int idPaciente) {
 		return entityManager.createQuery("FROM " + Consultas.class.getName() + " WHERE paciente_id = " + idPaciente+" ORDER BY dataConsulta ASC").getResultList();
